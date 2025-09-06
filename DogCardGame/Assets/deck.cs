@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // Card Management 
-public class Cards : MonoBehaviour
+public class Deck : MonoBehaviour
 {
     public List<Card> deck = new List<Card>();
 
@@ -37,18 +37,21 @@ public class Cards : MonoBehaviour
         }
     }
 
-    // Allow a player to pick 2 cards from the deck
-    public List<Card> ChooseTwoCards()
+
+    public List<Card> ChooseTwoCards(List<int> chosenIndices)
     {
         List<Card> chosenCards = new List<Card>();
 
-        for (int i = 0; i < 2 && deck.Count > 0; i++)
+
+        foreach (int index in chosenIndices)
         {
-            chosenCards.Add(deck[0]);
-            deck.RemoveAt(0);
+            if (index >= 0 && index < deck.Count)
+            {
+                chosenCards.Add(deck[index]);
+                deck.RemoveAt(index);
+            }
         }
 
         return chosenCards;
-        
     }
 }

@@ -14,10 +14,10 @@ public class Player
         this.name = name;
     }
 
-    public void ChooseTwoCards(Cards deck)
+    public void ChooseTwoCards(Deck deck, List<int> chosenIndices) 
     {
         hand.Clear();
-        List<Card> chosen = deck.ChooseTwoCards();
+        List<Card> chosen = deck.ChooseTwoCards(chosenIndices);
         hand.AddRange(chosen);
     }
 
